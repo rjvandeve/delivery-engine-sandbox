@@ -20,3 +20,8 @@ def char_frequency(text: str, ignore_case: bool = True) -> dict[str, int]:
             ch = ch.lower()
         counts[ch] = counts.get(ch, 0) + 1
     return counts
+
+
+def is_palindrome(text: str) -> bool:
+    """True when ``text`` reads the same backwards, ignoring case and whitespace."""
+    return text == text[::-1]
