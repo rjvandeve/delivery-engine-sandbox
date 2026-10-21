@@ -34,6 +34,17 @@ def count_vowels(text: str) -> int:
     return sum(1 for ch in text if ch in _VOWELS)
 
 
+def count_consonants(text: str) -> int:
+    """Number of consonants (ASCII letters that are not vowels, either case) in ``text``.
+
+    Vowels are whatever :func:`count_vowels` counts, so ``y`` is a consonant.
+    Digits, punctuation, whitespace and non-ASCII letters do not count.
+    Empty input returns ``0``.
+    """
+    ascii_letters = sum(1 for ch in text if ch.isascii() and ch.isalpha())
+    return ascii_letters - count_vowels(text)
+
+
 def is_palindrome(text: str) -> bool:
     """True when ``text`` reads the same backwards, ignoring case and whitespace."""
     normalized = "".join(ch for ch in text if not ch.isspace()).casefold()
