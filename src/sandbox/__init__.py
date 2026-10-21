@@ -35,3 +35,24 @@ def reverse_words(text: str) -> str:
     whitespace-only input returns ``""``.
     """
     return " ".join(reversed(text.split()))
+
+
+def title_case(text: str) -> str:
+    """``text`` with each whitespace-separated word capitalised.
+
+    The first character of every word is upper-cased and the rest lower-cased.
+    Only whitespace delimits words (so ``"don't"`` becomes ``"Don't"``, unlike
+    ``str.title``), and the original whitespace between words is preserved.
+    """
+    out = []
+    at_word_start = True
+    for ch in text:
+        if ch.isspace():
+            out.append(ch)
+            at_word_start = True
+        elif at_word_start:
+            out.append(ch.upper())
+            at_word_start = False
+        else:
+            out.append(ch.lower())
+    return "".join(out)
