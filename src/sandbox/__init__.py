@@ -22,6 +22,18 @@ def char_frequency(text: str, ignore_case: bool = True) -> dict[str, int]:
     return counts
 
 
+_VOWELS = frozenset("aeiouAEIOU")
+
+
+def count_vowels(text: str) -> int:
+    """Number of vowels (``a``, ``e``, ``i``, ``o``, ``u``, either case) in ``text``.
+
+    Only those five ASCII letters count (``y`` and accented letters do not).
+    Empty input returns ``0``.
+    """
+    return sum(1 for ch in text if ch in _VOWELS)
+
+
 def is_palindrome(text: str) -> bool:
     """True when ``text`` reads the same backwards, ignoring case and whitespace."""
     normalized = "".join(ch for ch in text if not ch.isspace()).casefold()
