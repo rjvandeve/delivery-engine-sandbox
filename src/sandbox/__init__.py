@@ -28,6 +28,20 @@ def is_palindrome(text: str) -> bool:
     return normalized == normalized[::-1]
 
 
+def is_anagram(a: str, b: str) -> bool:
+    """True when ``a`` and ``b`` use the same letters, ignoring case and whitespace.
+
+    Every non-whitespace character must appear the same number of times in
+    both strings (punctuation still counts). Two empty or whitespace-only
+    strings are anagrams of each other.
+    """
+
+    def normalize(text: str) -> list[str]:
+        return sorted(ch for ch in text.casefold() if not ch.isspace())
+
+    return normalize(a) == normalize(b)
+
+
 def reverse_words(text: str) -> str:
     """Words of ``text`` in reverse order, joined by single spaces.
 
