@@ -24,4 +24,5 @@ def char_frequency(text: str, ignore_case: bool = True) -> dict[str, int]:
 
 def is_palindrome(text: str) -> bool:
     """True when ``text`` reads the same backwards, ignoring case and whitespace."""
-    return text == text[::-1]
+    normalized = "".join(ch for ch in text if not ch.isspace()).casefold()
+    return normalized == normalized[::-1]
