@@ -26,3 +26,12 @@ def is_palindrome(text: str) -> bool:
     """True when ``text`` reads the same backwards, ignoring case and whitespace."""
     normalized = "".join(ch for ch in text if not ch.isspace()).casefold()
     return normalized == normalized[::-1]
+
+
+def reverse_words(text: str) -> str:
+    """Words of ``text`` in reverse order, joined by single spaces.
+
+    Runs of whitespace (including leading/trailing) are collapsed, so empty or
+    whitespace-only input returns ``""``.
+    """
+    return " ".join(reversed(text.split()))
